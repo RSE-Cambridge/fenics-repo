@@ -10,37 +10,30 @@ class FenicsPerformanceTest(CMakePackage):
     """performance tests for fenics"""
 
     homepage = "https://github.com/FEniCS/performance-test"
-    git      = "https://github.com/FEniCS/performance-test.git"
+    git = "https://github.com/FEniCS/performance-test.git"
 
-    version('2019-mar', commit='386b8fc')
-    version('2019-feb', commit='354b12806b81d2a25ea14c2e48cb763fcd6e64e5')
+    version("2019-mar", commit="386b8fc")
+    version("2019-feb", commit="354b12806b81d2a25ea14c2e48cb763fcd6e64e5")
 
-    extends('python')
+    extends("python")
 
-    depends_on('py-ffcx')
-    depends_on('dolfinx')
-    depends_on('boost+program_options')
+    depends_on("py-ffcx")
+    depends_on("dolfinx")
+    depends_on("boost+program_options")
 
-    #patch('001-function-space.patch')
-
-    @run_before('cmake')
+    @run_before("cmake")
     def compile_forms(self):
-        ffc = which('ffc', path=self.spec['py-ffcx'].prefix.bin)
-        with working_dir('src'):
-            #ffc('-l', 'dolfin', 'Elasticity.ufl')
-            #ffc('-l', 'dolfin', '-f', 'form_postfix', 'False', 'Poisson.ufl')
-            ffc('Elasticity.ufl')
-            ffc('Poisson.ufl')
+        ffc = which("ffc", path=self.spec["py-ffcx"].prefix.bin)
+        with working_dir("src"):
+            ffc("Elasticity.ufl")
+            ffc("Poisson.ufl")
 
     def install(self, spec, prefix):
         mkdirp(prefix.bin)
-        install(join_path('spack-build', 'dolfin-scaling-test'), prefix.bin)
+        install(join_path("spack-build", "dolfin-scaling-test"), prefix.bin)
 
-    root_cmakelists_dir = 'src'
+    root_cmakelists_dir = "src"
 
     def cmake_args(self):
-        mpi = self.spec['mpi']
-        return [
-            '-DMPI_C_COMPILER=%s'%mpi.mpicc,
-            '-DMPI_CXX_COMPILER=%s'%mpi.mpicxx,
-            ]
+        mpi = self.spec["mpi"]
+        return ["-DMPI_C_COMPILER=%s" % mpi.mpicc, "-DMPI_CXX_COMPILER=%s" % mpi.mpicxx]
