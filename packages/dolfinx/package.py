@@ -15,6 +15,7 @@ class Dolfinx(CMakePackage):
 
     submodules = True
 
+    version("2019-may", commit="85efe3eed55d2cf92668a4a17c364a0cd9489791")
     version("2019-apr", commit="c4c208651d2ad37aa983e10a1b58d5a77b1106a9")
     version("2019-mar", commit="3fd0d56")
     version("2019-feb", commit="84ba31dc2401caf46d99f139944d6cec9c07eedf")
