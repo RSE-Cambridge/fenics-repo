@@ -52,3 +52,8 @@ class Dolfinx(CMakePackage):
             "-DMPI_C_COMPILER=%s" % mpi.mpicc,
             "-DMPI_CXX_COMPILER=%s" % mpi.mpicxx,
         ]
+
+    @run_after("install")
+    def python_install(self):
+        with working_dir("python"):
+            which("pip")("install", ".")
