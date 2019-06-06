@@ -25,7 +25,7 @@ class Dolfinx(CMakePackage):
 
     depends_on("mpi")
     depends_on("hdf5+hl+fortran")
-    depends_on("petsc+mpi+shared+hypre+metis~superlu-dist@develop")
+    depends_on("petsc+mpi+shared+hypre+metis~superlu-dist@3.11.1")
     depends_on("py-numpy")
     depends_on("py-sympy")
     depends_on("py-ffcx")
