@@ -17,7 +17,6 @@ class FenicsPerformanceTest(CMakePackage):
     version("2019-mar", commit="386b8fc")
     version("2019-feb", commit="354b12806b81d2a25ea14c2e48cb763fcd6e64e5")
 
-    extends("python")
 
     depends_on("py-ffcx")
     depends_on("dolfinx")
