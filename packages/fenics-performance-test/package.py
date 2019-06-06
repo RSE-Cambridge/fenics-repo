@@ -12,6 +12,7 @@ class FenicsPerformanceTest(CMakePackage):
     homepage = "https://github.com/FEniCS/performance-test"
     git = "https://github.com/FEniCS/performance-test.git"
 
+    version("2019-apr", commit="37c7777ca986d0eb88d84974b77c76b38d257bf6")
     version("2019-mar", commit="386b8fc")
     version("2019-feb", commit="354b12806b81d2a25ea14c2e48cb763fcd6e64e5")
 
